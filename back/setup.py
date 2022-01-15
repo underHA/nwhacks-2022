@@ -4,6 +4,7 @@ requires = [
     'flask',
     'flask-sqlalchemy',
     'psycopg2',
+    'google-search-results'
 ]
 
 setup(
