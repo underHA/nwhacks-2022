@@ -1,37 +1,23 @@
-from flask import Flask
-from flask import request
-from flask import jsonify
-import os
-import openai
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
+from flask import Flask, request
 
 app = Flask(__name__)
 
-
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def initialize_server():
+    json_res = {
+        "message": "bruh"
+    }
+    return json_res
 
 
-@app.route("/completion", methods=['GET', 'POST'])
-def complete():
+@app.route("/recommend_playlist", methods=['POST'])
+def get_recommended_playlist():
+    req = request.json # pass this data to ML later on :)
+    return req
 
-    req = request.get_json()
-    text = req['title']
-    res = openai.Completion.create(
-        engine="ada",
-        prompt=text,
-        max_tokens=40
-    )
-    choices = res.choices[0]
-    text = choices['text']
-    print(text)
 
-    newText = text[:(text.index('.')+1)]
-    print(newText)
-    textResponse = {'text': newText}
+def main():
+    print("bruh")
 
-    return jsonify(
-        textResponse
-    )
+main()
