@@ -3,6 +3,8 @@ from setuptools import setup, find_packages
 requires = [
     'flask',
     'flask-sqlalchemy',
+    'flask_restful',
+    'flask_cors',
     'psycopg2',
     'google-search-results'
 ]
