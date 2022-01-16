@@ -17,3 +17,56 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(126, 126, 126);
 }
+
+.App {
+  height: 100vh;
+  background-image: url(./background.png);
+  background-position: center;
+}
+
+/*---------NAVBAR----------*/
+* {
+  box-sizing: border-box;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  padding-top: 60px;
+}
+.nav {
+  width: 15%;
+  display: inline-flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+
+.nav-item {
+  color: black;
+  padding-bottom: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0 7px;
+  z-index: 1;
+  font-size: 22px;
+  font-weight: 500;
+  position: relative;
+}
+.nav-item:not(.is-active):hover {
+  color: rgb(105, 105, 105);
+}
+
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  transition: 0.4s;
+  height: 3px;
+  z-index: 1;
+}

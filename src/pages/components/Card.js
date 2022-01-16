@@ -4,7 +4,7 @@ import "./Card.css";
 export function CardLeft(props) {
     return (
         <div className="card-container">
-            <img src={props.image} alt="image" className="card-image-left"/>
+            <img src={props.image} alt="" className="card-image-left"/>
             <div className="text-container">
                 <div className="text-sub-container">
                     <p className="card-title-left">{props.title}</p>
@@ -24,7 +24,7 @@ export function CardRight(props) {
                     <p className="card-subtext-right">{props.subtext}</p>
                 </div>
             </div>
-            <img src={props.image} alt="image" className="card-image-right"/>
+            <img src={props.image} alt="" className="card-image-right"/>
         </div>
     )
 }
