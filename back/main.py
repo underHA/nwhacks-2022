@@ -88,11 +88,11 @@ def json_example():
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         f1 = executor.submit(getImage, sentence)
-        f2 = executor.submit(caption, sentence)
+        # f2 = executor.submit(caption, sentence)
 
     concurrent.futures.wait([f1, f2], return_when=ALL_COMPLETED)
     print(f1.result())
-    print(f2.result())
+    # print(f2.result())
     print("done both")
     slide = {'image': f1.result(), 'caption': f2.result()}
     return jsonify(slide)
