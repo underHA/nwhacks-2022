@@ -15,6 +15,7 @@ export function CardLeft(props) {
     )
 }
 
+/*
 export function CardRight(props) {
     return (
         <div className="card-container">
@@ -28,3 +29,4 @@ export function CardRight(props) {
         </div>
     )
 }
+*/

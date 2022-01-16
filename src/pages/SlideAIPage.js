@@ -1,5 +1,5 @@
 import React from "react";
-import { CardLeft, CardRight } from "./components/Card.js";
+import { CardLeft } from "./components/Card.js";
 import "./SlideAIPage.css";
 
 import { useRef, useState, useEffect } from "react";
@@ -98,19 +98,10 @@ function SlideAIPage(props) {
         }
 
         setCardRenders(lastThree.map((object) => {
-            if (object.id%2 == 0) {
-                //If the ID is even
-                <CardRight id={object.id}
+            <CardLeft id={object.id}
                 title={object.title}
                 subtext={object.subtext}
                 image={object.image}/>
-            } else {
-                //If the ID is odd
-                <CardLeft id={object.id}
-                title={object.title}
-                subtext={object.subtext}
-                image={object.image}/>
-            }
         }));
     }, [test]);
 

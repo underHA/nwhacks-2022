@@ -10,7 +10,7 @@
 
     box-shadow: 0 10px 30px 5px rgba(0,0,0,0.1);
     background-color: rgba(255, 255, 255, 1);
-    border-radius: 25px;
+    border-radius: 15px;
 }
 .text-container {
     display: flex;
@@ -31,7 +31,8 @@
     width: 300px;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px 0 0 15px;
+    border-radius: 20px;
+    padding: 10px;
 }
 .card-title-left {
     font-size: 26px;
@@ -49,6 +50,7 @@
 
 
 /*---------CARD RIGHT---------*/
+/*
 .card-image-right {
     width: 300px;
     height: 100%;
@@ -68,3 +70,4 @@
     color: #4D4D4D;
     text-align: right;
 }
+*/

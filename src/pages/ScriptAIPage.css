@@ -1,104 +1,59 @@
 .pagecontainer {
     display: flex;
-}
-
-/*---------PAGE TOP-----------*/
-
-/*---------PAGE MIDDLE-----------*/
-.carddeck-container {
-    width: 60%;
-    margin: auto;
-
-    display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-/*----------PAGE BOTTOM---------*/
-.transcription-n-mute{
-    width: 60%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 70px;
-
-    display: flex;
-    flex-direction: row;
-}
-.transcription-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
     width: 100%;
+    justify-content: center;
+}
+.script-form {
+    width: 55%;
+    display: flex;
+    margin: auto;
+}
+#script-input {
+    width: 100%;
+    height: 50px;
+
     padding: 20px;
 
-    box-shadow: 0 0 10px rgba(0,0,0,0.07);
     background-color: white;
-    border-radius: 25px;
-    
-    font-size: 22px;
-}
-.mute-btt {
-    width: 75px;
-    height: 75px;
-
+    border-radius: 20px;
+    border-width: 0px;
     box-shadow: 0 0 10px rgba(0,0,0,0.07);
-    background-color: white;
-    border-radius: 25px;
 
-    margin-left: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    font-size: 20px;
+    font-weight: 300;
 }
+#script-submit {
+    width: 140px;
+    height: 40px;
 
+    margin: auto;
+    margin-left: 20px;
 
-/*----------PAGE BACKGROUND---------*/
-.foreground {
-    z-index: 1;
-}
-.background {
-    z-index: 2;
-
-}
-
-/*
-filter: blur(200px);
--webkit-filter: blur(200px);
-*/
-
-/*
-.circle1 {
-    width: 700px;
-    height: 700px;
-    border-radius: 350px;
-    background-color: #7BD5F5;
-
-    position: absolute;
-    top: 150px;
-    left: -100px;
-}
-.circle2 {
-    width: 700px;
-    height: 700px;
-    border-radius: 350px;
     background-color: #787FF6;
+    border-radius: 10px;
+    border-width: 0px;
 
-    position: absolute;
-    top: -300px;
-    right: -50px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
 }
-.circle3 {
-    width: 700px;
-    height: 700px;
-    border-radius: 350px;
-    background-color: #4ADEDE;
 
-    position: absolute;
-    bottom: -300px;
-    right: 150px;
+.output-field {
+    width: 55%;
+    height: 600px;
+
+    margin: auto;
+    margin-top: 30px;
+    padding: 30px;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 25px;
+    border-width: 0px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+
+    font-size: 20px;
+    font-weight: 300;
+
+    overflow-y: auto;
 }
-*/
