@@ -43,12 +43,16 @@ def getImage(sentence):
 
 
 def caption(sentence):
+    if sentence[-1] != "." and sentence[-1] != "?" and sentence[-1] != "!":
+        sentence = sentence+"."
+    print(sentence)
     res = openai.Completion.create(
         engine="ada",
         prompt=sentence,
         max_tokens=50
     )
     text = res.choices[0]['text']
+    print(text)
     periods = [i for i, x in enumerate(
         text) if x == '.' or x == '!' or x == '?']
     print(periods)
@@ -92,7 +96,7 @@ def json_example():
     words = f2.result()
 
     # Sanitize the output before sending back
-    if words[0:1] == ".": 
+    if words[0:1] == ".":
         words = words[1:].strip()
 
     # print(f2.result())
