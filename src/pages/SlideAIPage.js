@@ -3,6 +3,9 @@ import { CardLeft } from "./components/Card.js";
 import "./SlideAIPage.css";
 import Banner from "../banner.png";
 
+import MicOnImg from "../mic-on.png";
+import MicOffImg from "../mic-off.png";
+
 import { useRef, useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import axios from 'axios';
@@ -68,7 +71,7 @@ function SlideAIPage(props) {
 
         // compare the seconds elapsed from the latest message. if it's a significant pause (2 seconds), send all new text
         // OR: 10 seconds has elapsed.
-        if ((Date.now() / 1000) - pauseTimestamp > 2 || (Date.now() / 1000) - sentTimestamp > 10) {
+        if ((Date.now() / 1000) - pauseTimestamp > 1.5 || (Date.now() / 1000) - sentTimestamp > 10) {
             sendTranscript(array)
             // TODO: check the last send time
         }
@@ -107,6 +110,14 @@ function SlideAIPage(props) {
 
     }, [test]);
 
+    function drawMic(on) {
+        if (on) {
+            return <img src={MicOnImg} style={{width: 25, height: 25}}/>
+        } else {
+            return <img src={MicOffImg} style={{width: 25, height: 25}}/>
+        }
+    }
+
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
@@ -123,10 +134,8 @@ function SlideAIPage(props) {
                     <div className="transcription-bar">
                         <p>{relevantText}</p>
                     </div>
-                    <div className="mute-btt" onClick={listening ? SpeechRecognition.stopListening : startListening}>
-                        <img src="https://cdn-icons-png.flaticon.com/512/107/107037.png"
-                            style={{width: 20, height: 20}}/>
-                        <p>{listening ? 'on' : 'off'}</p>
+                    <div className={listening ? "mute-btt" : "mute-btt muted"} onClick={listening ? SpeechRecognition.stopListening : startListening}>
+                        {drawMic(listening)}
                     </div>
                 </div>
             </div>

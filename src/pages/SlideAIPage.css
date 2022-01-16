@@ -54,6 +54,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: 0.3s;
+}
+.muted {
+    background-color: tomato;
+    color: white;
+    transition: 0.3s;
 }
 
 
