@@ -73,33 +73,6 @@ def caption(sentence):
         newText = text[:(periods[0]+1)]
 
     return newText
-    # else:
-    #     res = openai.Completion.create(
-    #         engine="ada",
-    #         prompt=sentence,
-    #         max_tokens=60
-    #     )
-    #     text = res.choices[0]['text']
-    #     periods = [i for i, x in enumerate(
-    #         text) if x == '.' or x == '!' or x == '?']
-    #     print(periods)
-    #     if len(periods) == 0:
-    #         for i in range(175, 0, -1):
-    #             if text[i] == ' ':
-    #                 newText = text[:i]
-    #                 break
-    #     elif len(periods) == 1:
-    #         newText = text[:(periods[0]+1)]
-    #     elif periods[1] < 175:
-    #         newText = text[:(periods[1]+1)]
-    #     elif periods[0] > 175 and periods[0] < (periods[1]-periods[0]):
-    #         newText = text[:(periods[0]+1)]
-    #     elif periods[0] > 175 and periods[0] > (periods[1]-periods[0]):
-    #         newText = text[(periods[0]+1):(periods[1]+1)]
-    #     else:
-    #         newText = text[:(periods[0]+1)]
-
-    #     return newText
 
 
 @app.route('/sentence', methods=['POST', 'GET'])
