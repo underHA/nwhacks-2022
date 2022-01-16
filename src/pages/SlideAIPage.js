@@ -44,7 +44,6 @@ function SlideAIPage(props) {
     // function for sending transcript to backend.
     // Transcript is locally defined. Currently: a string
     const sendTranscript = (array) => { 
-        console.log(test)
         // want to show newest parts of transcript array. so, set a new index.
         setTranscriptIndex(array.length - 1);
         setSentTimestamp(Date.now() / 1000);
@@ -54,14 +53,12 @@ function SlideAIPage(props) {
         // axios.post('http://localhost:5000/json_example', article);
         const article = { sentence: relevantText };
         axios.post('http://localhost:5000/sentence', article)
-            .then(response => setTest(
-                test.push({
-                    "id": test.length + 1,
-                    "title": response.data.title,
-                    "subtext": response.data.caption,
-                    "image": response.data.image
-                })));
-        console.log(test)
+            .then(response => setTest(e => e.concat([{
+                "id": e.length + 1,
+                "title": response.data.title,
+                "subtext": response.data.caption,
+                "image": response.data.image
+            }])));
     }
 
     // React detects that transcript is changing
@@ -93,29 +90,19 @@ function SlideAIPage(props) {
     const [cardRenders, setCardRenders] = useState([]);
 
     useEffect(() => {
-        switch (test.length) {
-            case 0:
-                console.log("Return three blanks");
-                break;
-            case 1:
-                console.log("Return two blanks");
-                break;
-            case 2:
-                console.log("Return one blank");
-                break;
-            case 3:
-                let lastThree = [];
-                for (let i = 1; i <= 3; i++) {
-                    lastThree.push(test.at(-1*i));
-                }
+        console.log(typeof test)
+        console.log(test)
+        let lastThree = test.slice(-3);
+        // for (let i = 1; i <= 3; i++) {
+        //     lastThree.push(test.at(-1*i));
+        // }
 
-                setCardRenders(lastThree.map((object) => {
-                    return <CardLeft id={object.id}
-                        title={object.title}
-                        subtext={object.subtext}
-                        image={object.image}/>
-                }));
-        }
+        setCardRenders(lastThree.map((object) => {
+            return <CardLeft id={object.id}
+                title={object.title}
+                subtext={object.subtext}
+                image={object.image}/>
+        }));
 
     }, [test]);
 
