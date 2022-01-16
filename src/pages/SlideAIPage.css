@@ -1,8 +1,12 @@
 .pagecontainer {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    height: 100vh;
+    background-image: url(./background.png);
+    display:flex;
 }
 
+.foreground {
+    padding-top: 50px;
+}
 
 /*---------PAGE TOP-----------*/
 .menu-bar {
@@ -36,12 +40,16 @@
 .transcription-bar {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
     width: 100%;
-    height: 70px;
 
     box-shadow: 0 0 10px rgba(0,0,0,0.07);
     border-radius: 15px;
+
+    padding: 20px;
+    
 }
 .mute-btt {
     width: 70px;
@@ -55,6 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 
