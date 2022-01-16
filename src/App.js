@@ -4,7 +4,6 @@ import SlideAIPage from "./pages/SlideAIPage"
 import Dictaphone from './components/Dictaphone.js';
 
 function App() {
-  
   useEffect(() => {
      // NAVBAR ANIMATION CODE
     var indicator = document.querySelector('.nav-indicator');
