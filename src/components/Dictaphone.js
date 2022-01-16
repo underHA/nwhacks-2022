@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRef, useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import axios from 'axios';
 
 const Dictaphone = () => {
   const {
@@ -15,6 +16,7 @@ const Dictaphone = () => {
   const [pauseTimestamp, setPauseTimestamp] = useState(Date.now() / 1000);
   const [sentTimestamp, setSentTimestamp] = useState(Date.now() / 1000);
   const [relevantText, setRelevantText] = useState("");
+  const [test, setTest] = useState("");
 
   const startListening = () => { SpeechRecognition.startListening({ continuous: true }) };
 
@@ -24,6 +26,13 @@ const Dictaphone = () => {
     // want to show newest parts of transcript array. so, set a new index.
     setTranscriptIndex(array.length - 1);
     setSentTimestamp(Date.now() / 1000);
+
+    // POST request using fetch inside useEffect React hook
+    // const article = { title: 'React Hooks POST Request Example' };
+    // axios.post('http://localhost:5000/json_example', article);
+    const article = { sentence: relevantText };
+    axios.post('http://localhost:5000/sentence', article)
+        .then(response => console.log(response.data));
   }
 
   // React detects that transcript is changing
@@ -51,6 +60,16 @@ const Dictaphone = () => {
     setPauseTimestamp(Date.now() / 1000);
 
   }, [transcript])
+
+  // test use effect
+  useEffect(() => {
+    // GET request using axios inside useEffect React hook
+    axios.get('http://localhost:5000/')
+        .then(response => setTest(response.data.message));
+
+  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;

@@ -1,15 +1,16 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from monkeylearn import MonkeyLearn
 import os
 import openai
 import time
 import multiprocessing
 openai.api_key = os.getenv("OPENAI_API_KEY")
-monkey = MonkeyLearn('63cbd91a9cff8c060a87906440ba92d7c91803b9')
-model_id = 'ex_YCya9nrn'
-
 app = Flask(__name__)
+CORS(app)
 
+sentence = ""
+# sentences = []
 
 def monkey(sentence):
     keywords = monkey.extractors.extract(model_id, [sentence])
@@ -21,7 +22,10 @@ def monkey(sentence):
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return {
+        "message": sentence,
+        # "stuff": sentences
+    }
 
 
 @app.route("/completion", methods=['GET', 'POST'])
@@ -60,5 +64,16 @@ def complete():
     textResponse = {'text': newText}
     endtime = time.time()
     print("this program took "+str(endtime-starttime) + " seconds to run.")
-
+    
     return textResponse
+
+# GET requests will be blocked
+@app.route('/sentence', methods=['POST'])
+def json_example():
+    global sentence, sentences
+    request_data = request.get_json()
+    sentence = request_data['sentence']
+    # sentences.append(sentence)
+    
+    # request_data is returned to react
+    return request_data
