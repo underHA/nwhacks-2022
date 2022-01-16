@@ -41,6 +41,9 @@ function App() {
         <p className="logo-text">Pitch.ai</p>
       </div>
 
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_fullScreen.svg/1200px-OOjs_UI_icon_fullScreen.svg.png"
+      className="fullscreen-icon"/>
+
       <div className="nav-container">
         <nav className="nav">
             <a className="nav-item is-active" active-color="black">Slide AI</a>
