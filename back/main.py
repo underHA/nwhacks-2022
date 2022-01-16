@@ -1,23 +1,23 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from monkeylearn import MonkeyLearn
+
+from google_images import Images
 import os
 import openai
 import time
-import multiprocessing
+import concurrent.futures
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+
+# GET requests will be blocked
 app = Flask(__name__)
 CORS(app)
 
+monkey = MonkeyLearn(os.getenv("MONKEYLEARN_KEY"))
+model_id = os.getenv("MODEL_ID")
 sentence = ""
 # sentences = []
-
-def monkey(sentence):
-    keywords = monkey.extractors.extract(model_id, [sentence])
-
-    keyword = keywords.body[0]['extractions'][0]['parsed_value']
-
-    print(keyword)
 
 
 @app.route("/")
@@ -26,10 +26,20 @@ def hello_world():
         "message": sentence,
         # "stuff": sentences
     }
+# GET requests will be blocked
 
 
-@app.route("/completion", methods=['GET', 'POST'])
-def complete():
+def getImage(sentence):
+    keywords = monkey.extractors.extract(model_id, [sentence])
+
+    keyword = keywords.body[0]['extractions'][0]['parsed_value']
+
+    print(keyword)
+    image = Images.findImg(keyword)
+    return image
+
+
+def caption(sentence):
     starttime = time.time()
     req = request.get_json()
     sentence = req['title']
@@ -64,16 +74,28 @@ def complete():
     textResponse = {'text': newText}
     endtime = time.time()
     print("this program took "+str(endtime-starttime) + " seconds to run.")
-    
+
     return textResponse
 
-# GET requests will be blocked
+
 @app.route('/sentence', methods=['POST'])
 def json_example():
     global sentence, sentences
     request_data = request.get_json()
     sentence = request_data['sentence']
     # sentences.append(sentence)
-    
+
     # request_data is returned to react
-    return request_data
+
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        f1 = executor.submit(getImage, sentence)
+        # f2 = executor.submit(caption, sentence)
+
+    print(f1.result())
+    # print(f2.result())
+    print("done both")
+    slide = {
+        'image': f1.result(), 
+        # 'caption': f2.result()
+    }
+    return slide
