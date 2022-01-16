@@ -37,19 +37,16 @@ def getImage(sentence):
 
     print(keyword)
     image = Images.findImg(keyword)
-    return image
+    return [image, keyword]
 
 
 def caption(sentence):
-    starttime = time.time()
     res = openai.Completion.create(
         engine="ada",
         prompt=sentence,
         max_tokens=50
     )
-    choices = res.choices[0]
-    text = choices['text']
-    newText = ""
+    text = res.choices[0]['text']
     periods = [i for i, x in enumerate(
         text) if x == '.' or x == '!' or x == '?']
     print(periods)
@@ -69,15 +66,10 @@ def caption(sentence):
     else:
         newText = text[:(periods[0]+1)]
 
-    textResponse = {'text': newText}
-    print(newText)
-    endtime = time.time()
-    print("this program took "+str(endtime-starttime) + " seconds to run.")
-
-    return textResponse
+    return newText
 
 
-@app.route('/sentence', methods=['POST'])
+@app.route('/sentence', methods=['POST', 'GET'])
 def json_example():
     global sentence, sentences
     request_data = request.get_json()
@@ -88,11 +80,36 @@ def json_example():
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         f1 = executor.submit(getImage, sentence)
-        # f2 = executor.submit(caption, sentence)
+        f2 = executor.submit(caption, sentence)
 
     concurrent.futures.wait([f1, f2], return_when=ALL_COMPLETED)
     print(f1.result())
+    serpapi = f1.result()
+    image = serpapi[0]
+    keyword = serpapi[1]
+    words = f2.result()
     # print(f2.result())
     print("done both")
-    slide = {'image': f1.result(), 'caption': f2.result()}
+    slide = {'title': keyword, 'image': image, 'caption': words}
     return jsonify(slide)
+
+
+@app.route('/getscript', methods=['GET', 'POST'])
+def generateScript():
+
+    global sentence, sentences
+    request_data = request.get_json()
+    sentence = request_data['sentence']
+
+    res = openai.Completion.create(
+        engine="curie",
+        prompt=sentence,
+        max_tokens=300
+    )
+    script = res.choices[0]['text']
+    print(script)
+    periods = [i for i, x in enumerate(
+        script) if x == '.' or x == '!' or x == '?']
+    newScript = script[:(periods[-1]+1)]
+
+    return newScript
