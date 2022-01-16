@@ -89,10 +89,13 @@ def json_example():
 
     with concurrent.futures.ProcessPoolExecutor() as executor:
         f1 = executor.submit(getImage, sentence)
-        f2 = executor.submit(caption, sentence)
+        # f2 = executor.submit(caption, sentence)
 
     print(f1.result())
-    print(f2.result())
+    # print(f2.result())
     print("done both")
-    slide = {'image': f1.result, 'caption': f2.result}
+    slide = {
+        'image': f1.result(), 
+        # 'caption': f2.result()
+    }
     return slide
