@@ -3,10 +3,20 @@ from monkeylearn import MonkeyLearn
 import os
 import openai
 import time
+import multiprocessing
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+monkey = MonkeyLearn('63cbd91a9cff8c060a87906440ba92d7c91803b9')
+model_id = 'ex_YCya9nrn'
 
 app = Flask(__name__)
+
+
+def monkey(sentence):
+    keywords = monkey.extractors.extract(model_id, [sentence])
+
+    keyword = keywords.body[0]['extractions'][0]['parsed_value']
+
+    print(keyword)
 
 
 @app.route("/")
@@ -18,10 +28,10 @@ def hello_world():
 def complete():
     starttime = time.time()
     req = request.get_json()
-    text = req['title']
+    sentence = req['title']
     res = openai.Completion.create(
         engine="ada",
-        prompt=text,
+        prompt=sentence,
         max_tokens=50
     )
     choices = res.choices[0]
@@ -50,6 +60,5 @@ def complete():
     textResponse = {'text': newText}
     endtime = time.time()
     print("this program took "+str(endtime-starttime) + " seconds to run.")
-    return jsonify(
-        textResponse
-    )
+
+    return textResponse
