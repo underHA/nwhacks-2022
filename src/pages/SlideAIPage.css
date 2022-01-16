@@ -6,7 +6,8 @@
 
 /*---------PAGE MIDDLE-----------*/
 .carddeck-container {
-    width: 60%;
+    width: 55%;
+    height: 600px;
     margin: auto;
 
     display: flex;
@@ -16,7 +17,7 @@
 
 /*----------PAGE BOTTOM---------*/
 .transcription-n-mute{
-    width: 60%;
+    width: 55%;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 70px;
@@ -59,6 +60,7 @@
 /*----------PAGE BACKGROUND---------*/
 .foreground {
     z-index: 1;
+    width: 100%;
 }
 .background {
     z-index: 2;

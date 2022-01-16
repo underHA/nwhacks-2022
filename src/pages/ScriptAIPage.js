@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { CardLeft, CardRight } from "./components/Card.js";
 import "./ScriptAIPage.css";
 
 import axios from 'axios';
@@ -32,9 +31,16 @@ function SlideAIPage(props) {
                     <p id="p-wrap">{text}</p> :
                     <p>Waiting for output...</p>
                 }
+            <form className="script-form">
+                <input type="text" id="script-input" name="script-input"/>
+                <input type="submit" id="script-submit" value="Generate!"/>
+            </form>
+
+            <div className="output-field">
+                <p>This is an example output sentence.</p>
             </div>
         </div>
     )
 }
 
-export default SlideAIPage;
+export default ScriptAIPage;
