@@ -91,18 +91,32 @@ function SlideAIPage(props) {
 
     //Card Updater
     const [cardRenders, setCardRenders] = useState([]);
+
     useEffect(() => {
-        let lastThree = [];
-        for (let i = 1; i <= 3; i++) {
-            lastThree.push(test.at(-1*i));
+        switch (test.length) {
+            case 0:
+                console.log("Return three blanks");
+                break;
+            case 1:
+                console.log("Return two blanks");
+                break;
+            case 2:
+                console.log("Return one blank");
+                break;
+            case 3:
+                let lastThree = [];
+                for (let i = 1; i <= 3; i++) {
+                    lastThree.push(test.at(-1*i));
+                }
+
+                setCardRenders(lastThree.map((object) => {
+                    return <CardLeft id={object.id}
+                        title={object.title}
+                        subtext={object.subtext}
+                        image={object.image}/>
+                }));
         }
 
-        setCardRenders(lastThree.map((object) => {
-            <CardLeft id={object.id}
-                title={object.title}
-                subtext={object.subtext}
-                image={object.image}/>
-        }));
     }, [test]);
 
     if (!browserSupportsSpeechRecognition) {
@@ -130,18 +144,6 @@ function SlideAIPage(props) {
 
                 <div className="carddeck-container">
                     {cardRenders}
-                    <CardLeft title="UN SDGs"
-                        subtext="The United Nations Development Programme published a report on the impact of poverty on the lives of children, describing it as “the most important challenge of our time.”"
-                        image="https://i1.wp.com/www.un.org/sustainabledevelopment/wp-content/uploads/2015/12/english_SDG_17goals_poster_all_languages_with_UN_emblem_1.png?fit=728%2C451&ssl=1"
-                    />
-                    <CardLeft title="World Hunger"
-                        subtext="And the world hunger is experienced by young girls particularly. So, it's a very sensitive issue. I'm going to be talking about this for a long time."
-                        image="https://idsb.tmgrup.com.tr/2015/07/10/GenelBuyuk/1436522982590.jpg"
-                    />
-                    <CardLeft title="Hunger Indices"
-                        subtext="The new index is a compilation of a number of official records from the United Nations and it uses the World Food Program's estimates of hunger."
-                        image="https://upload.wikimedia.org/wikipedia/commons/8/8f/GHI_2021_-_Mappa.png"
-                    />
                 </div>
 
                 <div className="transcription-n-mute">
