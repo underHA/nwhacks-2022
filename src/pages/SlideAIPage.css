@@ -1,0 +1,106 @@
+.pagecontainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/*---------PAGE TOP-----------*/
+.menu-bar {
+    width: 15%;
+    margin: auto;
+    margin-bottom: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 20px;
+}
+
+/*---------PAGE MIDDLE-----------*/
+.carddeck-container {
+    width: 70%;
+    margin: auto;
+}
+
+/*----------PAGE BOTTOM---------*/
+.transcription-n-mute{
+    width: 70%;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+    display: flex;
+    flex-direction: row;
+}
+.transcription-bar {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 70px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    border-radius: 15px;
+}
+.mute-btt {
+    width: 70px;
+    height: 70px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    border-radius: 10px;
+
+    margin-left: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*----------PAGE BACKGROUND---------*/
+.foreground {
+    z-index: 1;
+}
+.background {
+    z-index: 2;
+
+}
+
+/*
+filter: blur(200px);
+-webkit-filter: blur(200px);
+*/
+
+/*
+.circle1 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #7BD5F5;
+
+    position: absolute;
+    top: 150px;
+    left: -100px;
+}
+.circle2 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #787FF6;
+
+    position: absolute;
+    top: -300px;
+    right: -50px;
+}
+.circle3 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #4ADEDE;
+
+    position: absolute;
+    bottom: -300px;
+    right: 150px;
+}
+*/
