@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from monkeylearn import MonkeyLearn
 
-from back.google_images import findImg
+from google_images import Images
 import os
 import openai
 import time
@@ -35,7 +35,7 @@ def getImage(sentence):
     keyword = keywords.body[0]['extractions'][0]['parsed_value']
 
     print(keyword)
-    image = findImg(keyword)
+    image = Images.findImg(keyword)
     return image
 
 
