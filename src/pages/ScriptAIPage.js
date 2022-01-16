@@ -30,7 +30,7 @@ function ScriptAIPage(props) {
                 </style>
                 
                 <div className="script-form">
-                    <input placeholder="What should I make a script about?" onChange={e => setInput(e.target.value)} type="text" id="script-input" name="script-input"/>
+                    <input placeholder="What should I make a script about? 💭" onChange={e => setInput(e.target.value)} type="text" id="script-input" name="script-input"/>
                     <button onClick={() => sendInput()} type="submit" id="script-submit">Generate!</button>
                 </div>
 
@@ -38,7 +38,7 @@ function ScriptAIPage(props) {
                     {
                         text ?
                         <p id="p-wrap">{text}</p> :
-                        <p>{ waiting ? "Generating output! Give me a moment... 😉" : "Waiting for output..."}</p>
+                        <p>{ waiting ? "Generating output! Give me a moment... 😉" : "Waiting for input above!"}</p>
                     }
                 </div>
             </div>
