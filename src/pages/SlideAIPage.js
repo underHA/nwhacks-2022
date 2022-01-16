@@ -55,7 +55,7 @@ function SlideAIPage(props) {
     axios.post('http://localhost:5000/sentence', article)
         .then(response => setTest(
             test.push({
-                "id": test.length,
+                "id": test.length + 1,
                 "title": response.data.title,
                 "subtext": response.data.caption,
                 "image": response.data.image
