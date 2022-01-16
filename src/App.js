@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react"
 import './App.css';
 import SlideAIPage from "./pages/SlideAIPage"
+import ScriptAIPage from "./pages/ScriptAIPage"
 import Dictaphone from './components/Dictaphone.js';
 
 function App() {
+  const [toggle, setToggle] = useState("");
+
   useEffect(() => {
      // NAVBAR ANIMATION CODE
     var indicator = document.querySelector('.nav-indicator');
     var items = document.querySelectorAll('.nav-item');
 
     function handleIndicator(el) {
+      setToggle(el.text)
       items.forEach(function (item) {
         item.classList.remove('is-active');
         item.removeAttribute('style');
@@ -31,7 +35,6 @@ function App() {
 
   return (
     <div className="App">
-
       <div className="nav-container">
         <nav className="nav">
             <a className="nav-item is-active" active-color="black">Slide AI</a>
@@ -39,8 +42,7 @@ function App() {
             <span className="nav-indicator"></span>
         </nav>
       </div>
-
-      <SlideAIPage/>
+      { toggle == "Slide AI" ? <SlideAIPage/> : <ScriptAIPage/> }  
     </div>
   );
 }
