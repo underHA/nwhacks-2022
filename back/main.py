@@ -56,6 +56,9 @@ def caption(sentence):
     periods = [i for i, x in enumerate(
         text) if x == '.' or x == '!' or x == '?']
     print(periods)
+    for period in periods:
+        if period < 20:
+            periods.remove(period)
     if len(periods) == 0:
         for i in range(175, 0, -1):
             if text[i] == ' ':
