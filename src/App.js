@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import './App.css';
-import SlideAIPage from "./pages/SlideAIPage"
-import ScriptAIPage from "./pages/ScriptAIPage"
+import SlideAIPage from "./pages/SlideAIPage";
+import ScriptAIPage from "./pages/ScriptAIPage";
 import Dictaphone from './components/Dictaphone.js';
+import Logo from "./logo.png";
 
 function App() {
   const [toggle, setToggle] = useState("");
@@ -35,6 +36,11 @@ function App() {
 
   return (
     <div className="App">
+      <div className="logo-container">
+        <img src={Logo} className="logo-img"/>
+        <p className="logo-text">Pitch.ai</p>
+      </div>
+
       <div className="nav-container">
         <nav className="nav">
             <a className="nav-item is-active" active-color="black">Slide AI</a>

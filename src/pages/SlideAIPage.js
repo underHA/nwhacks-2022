@@ -1,6 +1,7 @@
 import React from "react";
 import { CardLeft } from "./components/Card.js";
 import "./SlideAIPage.css";
+import Banner from "../banner.png";
 
 import { useRef, useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
@@ -22,21 +23,21 @@ function SlideAIPage(props) {
     const [relevantText, setRelevantText] = useState("");
     const [test, setTest] = useState([{
         "id": 1,
-        "title": "UN SDGs",
-        "subtext": "The United Nations Development Programme published a report on the impact of poverty on the lives of children, describing it as “the most important challenge of our time.”",
-        "image": "https://i1.wp.com/www.un.org/sustainabledevelopment/wp-content/uploads/2015/12/english_SDG_17goals_poster_all_languages_with_UN_emblem_1.png?fit=728%2C451&ssl=1"
+        "title": "What is Pitch.ai?",
+        "subtext": "Don't worry about slides; just present! Whether you struggle with computers, want to spice up a Q&A, or just want to mess around, Pitch.ai puts the present back in presentation :)",
+        "image": "https://21stcenturyrelocations.com/blogs/wp-content/uploads/2020/12/illustration-with-young-people-talking_52683-29824.jpg"
     },
     {
         "id": 2,
-        "title": "World Hunger",
-        "subtext": "And the world hunger is experienced by young girls particularly. So, it's a very sensitive issue. I'm going to be talking about this for a long time.",
-        "image": "https://idsb.tmgrup.com.tr/2015/07/10/GenelBuyuk/1436522982590.jpg"
+        "title": "How does it work?",
+        "subtext": "A custom algorithm segments your speech by topic, then MonkeyLearn API + SerpAPI finds a fitting image. OpenAI's GPT-3 caps it off with a predictive caption!",
+        "image": "https://study.com/cimages/videopreview/b5kit2d03m.jpg"
     },
     {
         "id": 3,
-        "title": "Hunger Indices",
-        "subtext": "The new index is a compilation of a number of official records from the United Nations and it uses the World Food Program's estimates of hunger.",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/GHI_2021_-_Mappa.png"
+        "title": "Just Start Talking",
+        "subtext": "As you talk, Pitch.ai will listen and quickly generate slides on-the-fly to match what you are saying. Don't worry! Several AIs make sure that all slides are relevant.",
+        "image": "https://www.galchimia.com/wp-content/uploads/2021/06/how-to-crash-your-own-presentation.jpg"
     }]);
 
     const startListening = () => { SpeechRecognition.startListening({ continuous: true }) };
@@ -109,21 +110,6 @@ function SlideAIPage(props) {
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
-
-    /*
-    <CardLeft title="UN SDGs"
-        subtext="The United Nations Development Programme published a report on the impact of poverty on the lives of children, describing it as “the most important challenge of our time.”"
-        image="https://i1.wp.com/www.un.org/sustainabledevelopment/wp-content/uploads/2015/12/english_SDG_17goals_poster_all_languages_with_UN_emblem_1.png?fit=728%2C451&ssl=1"
-    />
-    <CardRight title="World Hunger"
-        subtext="And the world hunger is experienced by young girls particularly. So, it's a very sensitive issue. I'm going to be talking about this for a long time."
-        image="https://idsb.tmgrup.com.tr/2015/07/10/GenelBuyuk/1436522982590.jpg"
-    />
-    <CardLeft title="Hunger Indices"
-        subtext="The new index is a compilation of a number of official records from the United Nations and it uses the World Food Program's estimates of hunger."
-        image="https://upload.wikimedia.org/wikipedia/commons/8/8f/GHI_2021_-_Mappa.png"
-    />
-    */
     
     return (
         <div className="pagecontainer">
