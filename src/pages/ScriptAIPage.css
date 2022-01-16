@@ -1,0 +1,104 @@
+.pagecontainer {
+    display: flex;
+}
+
+/*---------PAGE TOP-----------*/
+
+/*---------PAGE MIDDLE-----------*/
+.carddeck-container {
+    width: 60%;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*----------PAGE BOTTOM---------*/
+.transcription-n-mute{
+    width: 60%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 70px;
+
+    display: flex;
+    flex-direction: row;
+}
+.transcription-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    background-color: white;
+    border-radius: 25px;
+    
+    font-size: 22px;
+}
+.mute-btt {
+    width: 75px;
+    height: 75px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    background-color: white;
+    border-radius: 25px;
+
+    margin-left: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/*----------PAGE BACKGROUND---------*/
+.foreground {
+    z-index: 1;
+}
+.background {
+    z-index: 2;
+
+}
+
+/*
+filter: blur(200px);
+-webkit-filter: blur(200px);
+*/
+
+/*
+.circle1 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #7BD5F5;
+
+    position: absolute;
+    top: 150px;
+    left: -100px;
+}
+.circle2 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #787FF6;
+
+    position: absolute;
+    top: -300px;
+    right: -50px;
+}
+.circle3 {
+    width: 700px;
+    height: 700px;
+    border-radius: 350px;
+    background-color: #4ADEDE;
+
+    position: absolute;
+    bottom: -300px;
+    right: 150px;
+}
+*/
