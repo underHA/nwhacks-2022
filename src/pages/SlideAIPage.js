@@ -58,7 +58,7 @@ function SlideAIPage(props) {
                 test.push({
                     "id": test.length + 1,
                     "title": response.data.title,
-                    "subtext": response.data.caption.text,
+                    "subtext": response.data.caption,
                     "image": response.data.image
                 })));
         console.log(test)

@@ -32,6 +32,8 @@ def hello_world():
 
 def getImage(sentence):
     keywords = monkey.extractors.extract(model_id, [sentence])
+    if not keywords.body:
+        print("EMPTY BODY NOOO")
 
     keyword = keywords.body[0]['extractions'][0]['parsed_value']
 
@@ -86,8 +88,13 @@ def json_example():
     print(f1.result())
     serpapi = f1.result()
     image = serpapi[0]
-    keyword = serpapi[1]
+    keyword = serpapi[1].title()
     words = f2.result()
+
+    # Sanitize the output before sending back
+    if words[0:1] == ".": 
+        words = words[1:].strip()
+
     # print(f2.result())
     print("done both")
     slide = {'title': keyword, 'image': image, 'caption': words}
