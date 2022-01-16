@@ -106,10 +106,10 @@ def generateScript():
 
     global sentence, sentences
     request_data = request.get_json()
-    sentence = request_data['sentence']
+    sentence = f"Write a presentation script about {request_data['sentence']}."
 
     res = openai.Completion.create(
-        engine="curie",
+        engine="davinci-instruct-beta-v3",
         prompt=sentence,
         max_tokens=300
     )
@@ -117,6 +117,6 @@ def generateScript():
     print(script)
     periods = [i for i, x in enumerate(
         script) if x == '.' or x == '!' or x == '?']
-    newScript = script[:(periods[-1]+1)]
+    newScript = script[:(periods[-1]+1)].strip()
 
     return newScript
