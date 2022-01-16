@@ -34,14 +34,14 @@
     border-radius: 15px 0 0 15px;
 }
 .card-title-left {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     color: #000000;
 
     margin-bottom: 10px;
 }
 .card-subtext-left {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300;
     color: #4D4D4D;
 }
@@ -55,14 +55,14 @@
     border-radius: 0 15px 15px 0;
 }
 .card-title-right {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     color: #000000;
     margin-bottom: 10px;
     text-align: right;
 }
 .card-subtext-right {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300;
     color: #4D4D4D;
     text-align: right;
