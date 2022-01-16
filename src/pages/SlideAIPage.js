@@ -44,22 +44,24 @@ function SlideAIPage(props) {
     // function for sending transcript to backend.
     // Transcript is locally defined. Currently: a string
     const sendTranscript = (array) => { 
-    // want to show newest parts of transcript array. so, set a new index.
-    setTranscriptIndex(array.length - 1);
-    setSentTimestamp(Date.now() / 1000);
+        console.log(test)
+        // want to show newest parts of transcript array. so, set a new index.
+        setTranscriptIndex(array.length - 1);
+        setSentTimestamp(Date.now() / 1000);
 
-    // POST request using fetch inside useEffect React hook
-    // const article = { title: 'React Hooks POST Request Example' };
-    // axios.post('http://localhost:5000/json_example', article);
-    const article = { sentence: relevantText };
-    axios.post('http://localhost:5000/sentence', article)
-        .then(response => setTest(
-            test.push({
-                "id": test.length + 1,
-                "title": response.data.title,
-                "subtext": response.data.caption,
-                "image": response.data.image
-            })));
+        // POST request using fetch inside useEffect React hook
+        // const article = { title: 'React Hooks POST Request Example' };
+        // axios.post('http://localhost:5000/json_example', article);
+        const article = { sentence: relevantText };
+        axios.post('http://localhost:5000/sentence', article)
+            .then(response => setTest(
+                test.push({
+                    "id": test.length + 1,
+                    "title": response.data.title,
+                    "subtext": response.data.caption.text,
+                    "image": response.data.image
+                })));
+        console.log(test)
     }
 
     // React detects that transcript is changing
