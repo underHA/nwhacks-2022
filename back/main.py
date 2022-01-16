@@ -86,7 +86,7 @@ def json_example():
 
     # request_data is returned to react
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
         f1 = executor.submit(getImage, sentence)
         f2 = executor.submit(caption, sentence)
 
