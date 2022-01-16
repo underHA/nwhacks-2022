@@ -71,7 +71,7 @@ function SlideAIPage(props) {
 
         // compare the seconds elapsed from the latest message. if it's a significant pause (2 seconds), send all new text
         // OR: 10 seconds has elapsed.
-        if ((Date.now() / 1000) - pauseTimestamp > 2 || (Date.now() / 1000) - sentTimestamp > 10) {
+        if ((Date.now() / 1000) - pauseTimestamp > 1.5 || (Date.now() / 1000) - sentTimestamp > 10) {
             sendTranscript(array)
             // TODO: check the last send time
         }
