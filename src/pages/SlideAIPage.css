@@ -1,37 +1,24 @@
 .pagecontainer {
-    height: 100vh;
-    background-image: url(./background.png);
-    display:flex;
-}
-
-.foreground {
-    padding-top: 50px;
+    display: flex;
 }
 
 /*---------PAGE TOP-----------*/
-.menu-bar {
-    width: 15%;
-    margin: auto;
-    margin-bottom: 50px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    font-size: 20px;
-}
 
 /*---------PAGE MIDDLE-----------*/
 .carddeck-container {
-    width: 70%;
+    width: 60%;
     margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*----------PAGE BOTTOM---------*/
 .transcription-n-mute{
-    width: 70%;
+    width: 60%;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 70px;
 
     display: flex;
@@ -44,21 +31,23 @@
     justify-content: center;
 
     width: 100%;
+    padding: 20px;
 
     box-shadow: 0 0 10px rgba(0,0,0,0.07);
-    border-radius: 15px;
-
-    padding: 20px;
+    background-color: white;
+    border-radius: 25px;
     
+    font-size: 22px;
 }
 .mute-btt {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
 
     box-shadow: 0 0 10px rgba(0,0,0,0.07);
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 25px;
 
-    margin-left: 50px;
+    margin-left: 30px;
 
     display: flex;
     align-items: center;
