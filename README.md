@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Pitch.ai @ nwHacks 2022
+## Inspiration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+There are millions of people around the world who have a physical or learning disability which makes creating visual presentations extremely difficult. They may be visually impaired, suffer from ADHD or have disabilities like Parkinsons. For these people, being unable to create presentations isn’t just a hassle. It’s a barrier to learning, a reason for feeling left out, or a career disadvantage in the workplace. That’s why we created **Pitch.ai.**
 
-## Available Scripts
 
-In the project directory, you can run:
+## What it does
 
-### `npm start`
+Pitch.ai is a web app which creates visual presentations for you as you present. Once you open the web app, just start talking! Pitch.ai will listen to what you say and in real-time and generate a powerpoint presentation based on the content of your speech, just as if you had a slideshow prepared in advance.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How we built it
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We used a **React** client combined with a **Flask** server to make our API calls. To continuously listen for audio to convert to text, we used a react library called “react-speech-recognition”. Then, we designed an algorithm to detect pauses in the speech in order to separate sentences, which would be sent to the Flask server. 
 
-### `npm test`
+The Flask server would then use multithreading in order to make several API calls simultaneously. Firstly, the **Monkeylearn** API is used to find the most relevant keyword in the sentence. Then, the keyword is sent to **SerpAPI** in order to find an image to add to the presentation. At the same time, an API call is sent to OpenAPI’s GPT-3 in order to generate a caption to put on the slide. The caption, keyword and image of a single slide deck are all combined into an object to be sent back to the client.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Challenges we ran into
 
-### `npm run build`
+-Learning how to make dynamic websites
+-Optimizing audio processing time
+-Increasing efficiency of server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Accomplishments that we're proud of
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-Made an aesthetic user interface
+-Distributing work efficiently
+-Good organization and integration of many APIs
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## What we learned
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Multithreading 
+-How to use continuous audio input
+-React hooks
+-Animations
+-Figma
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## What's next for Pitch.ai
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-Faster and more accurate picture, keyword and caption generation
+-”Present mode”
+-Integrate a database to save your generated presentation
+-Customizable templates for slide structure, color, etc.
+-Build our own web scraping API to find images
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+List of frameworks and technologies
+Python
+Javascript
+React
+Flask
+Figma
+OpenAI
+SerpAPI
+Monkeylearn
