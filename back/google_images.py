@@ -13,9 +13,6 @@ class Images:
 
         })
         result = search.get_dict()
-
-        pass
-
         image = result['images_results'][0]['thumbnail']
 
         return image

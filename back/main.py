@@ -1,3 +1,4 @@
+from asyncio import ALL_COMPLETED
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from monkeylearn import MonkeyLearn
@@ -41,8 +42,6 @@ def getImage(sentence):
 
 def caption(sentence):
     starttime = time.time()
-    req = request.get_json()
-    sentence = req['title']
     res = openai.Completion.create(
         engine="ada",
         prompt=sentence,
@@ -50,7 +49,6 @@ def caption(sentence):
     )
     choices = res.choices[0]
     text = choices['text']
-    print(text)
     newText = ""
     periods = [i for i, x in enumerate(
         text) if x == '.' or x == '!' or x == '?']
@@ -72,6 +70,7 @@ def caption(sentence):
         newText = text[:(periods[0]+1)]
 
     textResponse = {'text': newText}
+    print(newText)
     endtime = time.time()
     print("this program took "+str(endtime-starttime) + " seconds to run.")
 
@@ -91,8 +90,9 @@ def json_example():
         f1 = executor.submit(getImage, sentence)
         f2 = executor.submit(caption, sentence)
 
+    concurrent.futures.wait([f1, f2], return_when=ALL_COMPLETED)
     print(f1.result())
     print(f2.result())
     print("done both")
-    slide = {'image': f1.result, 'caption': f2.result}
-    return slide
+    slide = {'image': f1.result(), 'caption': f2.result()}
+    return jsonify(slide)
