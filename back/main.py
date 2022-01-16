@@ -111,7 +111,7 @@ def generateScript():
     res = openai.Completion.create(
         engine="davinci-instruct-beta-v3",
         prompt=sentence,
-        max_tokens=300
+        max_tokens=500
     )
     script = res.choices[0]['text']
     print(script)
