@@ -16,32 +16,32 @@ The Flask server would then use multithreading in order to make several API call
 
 ## Challenges we ran into
 
--Learning how to make dynamic websites
--Optimizing audio processing time
+-Learning how to make dynamic websites<br>
+-Optimizing audio processing time<br>
 -Increasing efficiency of server
 
 
 ## Accomplishments that we're proud of
 
--Made an aesthetic user interface
--Distributing work efficiently
+-Made an aesthetic user interface <br>
+-Distributing work efficiently<br>
 -Good organization and integration of many APIs
 
 
 ## What we learned
 
--Multithreading 
--How to use continuous audio input
--React hooks
--Animations
+-Multithreading <br>
+-How to use continuous audio input<br>
+-React hooks<br>
+-Animations<br>
 -Figma
 
 ## What's next for Pitch.ai
 
--Faster and more accurate picture, keyword and caption generation
--”Present mode”
--Integrate a database to save your generated presentation
--Customizable templates for slide structure, color, etc.
+-Faster and more accurate picture, keyword and caption generation<br>
+-”Present mode”<br>
+-Integrate a database to save your generated presentation<br>
+-Customizable templates for slide structure, color, etc.<br>
 -Build our own web scraping API to find images
 
 
