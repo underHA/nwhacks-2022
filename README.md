@@ -48,11 +48,11 @@ The Flask server would then use multithreading in order to make several API call
 
 
 List of frameworks and technologies
-Python
-Javascript
-React
-Flask
-Figma
-OpenAI
-SerpAPI
+Python<br>
+Javascript<br>
+React<br>
+Flask<br>
+Figma<br>
+OpenAI<br>
+SerpAPI<br>
 Monkeylearn
