@@ -47,7 +47,7 @@ The Flask server would then use multithreading in order to make several API call
 
 
 
-List of frameworks and technologies
+List of frameworks and technologies<br>
 Python<br>
 Javascript<br>
 React<br>
