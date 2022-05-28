@@ -22,22 +22,25 @@ sentence = ""
 
 
 @app.route("/")
-def hello_world():
-    return {
-        "message": sentence,
-        # "stuff": sentences
-    }
-# GET requests will be blocked
+# def hello_world():
+#     return {
+#         "message": sentence,
+#         # "stuff": sentences
+#     }
+# # GET requests will be blocked
 
 
 def getImage(sentence):
     keywords = monkey.extractors.extract(model_id, [sentence])
-    if not keywords.body:
-        print("EMPTY BODY NOOO")
+    if keywords.body is None:
+        print("ERROR: EMPTY BODY")
+        break
+    try:
+        keyword = keywords.body[0]['extractions'][0]['parsed_value']
+    except KeyError:
+        break
 
-    keyword = keywords.body[0]['extractions'][0]['parsed_value']
-
-    print(keyword)
+#     print(keyword)
     image = Images.findImg(keyword)
     return [image, keyword]
 
@@ -52,13 +55,9 @@ def caption(sentence):
         max_tokens=50
     )
     text = res.choices[0]['text']
-    print(text)
-    periods = [i for i, x in enumerate(
-        text) if x == '.' or x == '!' or x == '?']
-    print(periods)
-    for period in periods:
-        if period < 20:
-            periods.remove(period)
+#     print(text)
+    periods = [i for i, x in enumerate(text) if (x == '.' or x == '!' or x == '?') and period >= 20]
+#     print(periods)
     if len(periods) == 0:
         for i in range(175, 0, -1):
             if text[i] == ' ':
@@ -92,7 +91,7 @@ def json_example():
         f2 = executor.submit(caption, sentence)
 
     concurrent.futures.wait([f1, f2], return_when=ALL_COMPLETED)
-    print(f1.result())
+#     print(f1.result())
     serpapi = f1.result()
     image = serpapi[0]
     keyword = serpapi[1].title()
@@ -102,8 +101,8 @@ def json_example():
     if words[0:1] == ".":
         words = words[1:].strip()
 
-    # print(f2.result())
-    print("done both")
+#     print(f2.result())
+#     print("done both")
     slide = {'title': keyword, 'image': image, 'caption': words}
     return jsonify(slide)
 
@@ -121,9 +120,8 @@ def generateScript():
         max_tokens=500
     )
     script = res.choices[0]['text']
-    print(script)
-    periods = [i for i, x in enumerate(
-        script) if x == '.' or x == '!' or x == '?']
+#     print(script)
+    periods = [i for i, x in enumerate(script) if x == '.' or x == '!' or x == '?']
     newScript = script[:(periods[-1]+1)].strip()
 
     return newScript
